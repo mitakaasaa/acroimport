@@ -1,8 +1,9 @@
 mod importer;
 mod models;
 mod pdf;
+use crate::importer::import::run_import;
 
 fn main() -> anyhow::Result<()> {
-    importer::run_import()?;
+    run_import()?;
     Ok(())
 }
