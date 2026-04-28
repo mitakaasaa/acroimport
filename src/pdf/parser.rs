@@ -2,7 +2,7 @@ use lopdf::{Document, Object};
 use std::collections::HashMap;
 
 pub fn parse_pdf(path: &str) -> anyhow::Result<HashMap<String, String>> {
-    let doc = Document::load(path)?;
+    let doc: Document = Document::load(path)?;
 
     let mut result: HashMap<String, String> = HashMap::new();
 
