@@ -2,4 +2,5 @@ target/
 importiert/
 .vscode/
 *.db
+*.csv
 test.pdf
