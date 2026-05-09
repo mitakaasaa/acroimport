@@ -6,3 +6,5 @@ edition = "2024"
 [dependencies]
 lopdf = "0.32"
 anyhow = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+csv = "1"
