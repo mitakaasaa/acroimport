@@ -1,13 +1,15 @@
 use std::collections::HashMap;
 use std::convert::TryFrom;
 
+use crate::models::course::Course;
+
 #[derive(Debug)]
 pub struct FormData {
     pub first_name: String,
     pub last_name: String,
     pub dog_name: String,
     pub breed: String,
-    pub courses: Vec<String>,
+    pub courses: Vec<Course>,
 }
 
 impl FormData {
@@ -33,22 +35,22 @@ impl TryFrom<&HashMap<String, String>> for FormData {
         let dog_name: String = data.get("dog_name").cloned().unwrap_or_default();
         let breed: String = data.get("dog_breed").cloned().unwrap_or_default();
 
-        let mut courses: Vec<String> = Vec::new();
+        let mut courses: Vec<Course> = Vec::new();
 
         if is_checked(data, "course_welpen") {
-            courses.push("Welpenkurs".to_string());
+            courses.push(Course::Welpenkurs);
         }
         if is_checked(data, "course_junghundenkurs") {
-            courses.push("Junghundekurs".to_string());
+            courses.push(Course::Junghundekurs);
         }
         if is_checked(data, "course_agility") {
-            courses.push("Agility".to_string());
+            courses.push(Course::Agility);
         }
         if is_checked(data, "course_obedience") {
-            courses.push("Obedience".to_string());
+            courses.push(Course::Obedience);
         }
         if is_checked(data, "course_mantrailing") {
-            courses.push("Mantrailing".to_string());
+            courses.push(Course::Mantrailing);
         }
 
         let form: FormData = FormData {
@@ -60,7 +62,7 @@ impl TryFrom<&HashMap<String, String>> for FormData {
         };
 
         if !form.is_valid() {
-            return Err(anyhow::anyhow!("Form is incomplete"));
+            return Err(anyhow::anyhow!("Formular unvollständig"));
         }
 
         Ok(form)
