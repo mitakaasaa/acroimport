@@ -1,8 +1,10 @@
 mod db;
+mod exporter;
 mod importer;
 mod models;
 mod pdf;
 
+use crate::exporter::export::run_export;
 use crate::importer::import::run_import;
 
 fn main() -> anyhow::Result<()> {
@@ -17,7 +19,7 @@ fn main() -> anyhow::Result<()> {
     match args[1].as_str() {
         "/n" => println!("Denys Stamat - Kate Lagutin - Malcolm Apaloo"),
         "/imp" => run_import()?,
-        "/exp" => println!("Exportiert!"), // TODO
+        "/exp" => run_export()?,
         _ => {
             println!("Fehlerhafter Programmaufruf!");
             println!("Verwendung: hundeschule.exe /n | /imp | /exp");
