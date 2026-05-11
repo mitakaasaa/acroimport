@@ -41,7 +41,7 @@ pub fn run_export() -> anyhow::Result<()> {
 fn write_csv(filename: &str, rows: &[(String, String, String, String)]) -> anyhow::Result<()> {
     let path: &Path = Path::new(filename);
     let mut wtr: csv::Writer<std::fs::File> =
-        WriterBuilder::new().delimiter(b',').from_path(path)?;
+        WriterBuilder::new().delimiter(b';').from_path(path)?;
 
     // Header
     wtr.write_record(["Vorname", "Nachname", "Hundename", "Rasse"])?;
